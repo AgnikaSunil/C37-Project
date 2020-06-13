@@ -25,7 +25,6 @@ var colorPicker1;
     save.style('background-color', color("#CCCCFF"));
     save.mousePressed(saveScribble);
 
-
     clear = createButton('Clear');
     clear.position(210,640);
     clear.size(100,51);
@@ -70,6 +69,9 @@ var colorPicker1;
         y:mouseY
       }
       pen.push(mouseLocation);
+      var Ref= database.ref("/").update({
+        storedScribble :scribble
+      });  
     }
     
     for(var i=0; i<scribble.length;i++){
@@ -85,8 +87,8 @@ var colorPicker1;
 	function startScribbling(){	
     pen=[];
     scribble.push(pen);
-	}
-
+  }
+  
   function bgChange(){
     bgButton = createButton("Change Background Color");
     bgButton.mousePressed(function(){
@@ -138,3 +140,5 @@ var colorPicker1;
   function clearScribble(){
     scribble = [];
   }
+
+  
